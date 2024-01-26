@@ -13,8 +13,7 @@ const http = require('http');
 
 const server = http.createServer();
 
-const wss = new WebSocket('http://xinying:3000/');
-// const wss = new WebSocket.Server({ port: 8082 });
+const wss = new WebSocket.Server({ port: 8082 });
 
 wss.on("connection", (ws) => {
   console.log("websocket connection established");

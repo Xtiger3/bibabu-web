@@ -44,22 +44,10 @@
         const field = document.getElementById('field').value;
 
         // Create a message object with user inputs
-        const message = { problem, track, field, text: 'Help needed' };
+        const message = { problem, track, field };
 
         // Send the message as JSON to the WebSocket server
         ws.send(JSON.stringify(message));
-
-        // Print the message to the console
-        console.log(message);
-        
-        // var formData = new FormData(form);
-        // for (var pair of formData.entries()) {
-        //     console.log(pair[0] + ": " + pair[1]);
-        // }
-
-        // const message = { text: '123', message: 'Help needed' }; 
-        // ws.send(JSON.stringify(message));
-        // console.log(message);
     });
 </script>
 </body>
