@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head></head>
+
+<body>
+<form>
+
+    <table>
+        <tr>
+            <td>Problem: </td>
+            <td><input type="text" id="problem" class="value" placeholder="Ideation"><br></td>
+            <!-- tech spec -->
+        </tr>
+
+        <tr>
+            <td>Track: </td>
+            <td><select name="track" id="track">
+                <option value="Productivity">Productivity</option>
+                <option value="Sustainability">Sustainability</option>
+                <option value="Learning">Learning</option>
+                <option value="Health">Health</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td>Field???: </td>
+            <td><input type="text" id="field" class="value" placeholder="Project Manager"><br></td>
+        </tr>
+    </table>
+
+    <input type="button" id="helpButton" value="submit help">
+
+</form>
+<script>
+    const ws = new WebSocket('ws://localhost:8082');
+    const form = document.querySelector('form')
+
+    document.getElementById('helpButton').addEventListener('click', function () {
+
+        const problem = document.getElementById('problem').value;
+        const track = document.getElementById('track').value;
+        const field = document.getElementById('field').value;
+
+        // Create a message object with user inputs
+        const message = { problem, track, field, text: 'Help needed' };
+
+        // Send the message as JSON to the WebSocket server
+        ws.send(JSON.stringify(message));
+
+        // Print the message to the console
+        console.log(message);
+        
+        // var formData = new FormData(form);
+        // for (var pair of formData.entries()) {
+        //     console.log(pair[0] + ": " + pair[1]);
+        // }
+
+        // const message = { text: '123', message: 'Help needed' }; 
+        // ws.send(JSON.stringify(message));
+        // console.log(message);
+    });
+</script>
+</body>
+
+</html>
