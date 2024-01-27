@@ -6,7 +6,7 @@ const Status = {
     NONE: 5
 };
 
-let curProg = Status.NONE;
+let curProg = Status.PROBLEM;
 
 let check1 = [false, false, false]
 let check2 = [false, false, false]
@@ -47,16 +47,35 @@ document.getElementById('helpButton').addEventListener('click', function () {
 function saveCheckBox(boxNum) {
     if (curProg == Status.PROBLEM) {
         check1[boxNum - 1] = !check1[boxNum - 1];
+        if (check1.every(value => value === true)) {
+            document.getElementById("img1").style.display = 'block';
+        } else {
+            document.getElementById("img1").style.display = 'none';
+        }
         // document.getElementById(`box${boxNum}`).checked = true;
     } else if (curProg == Status.IDEATION) {
         check2[boxNum - 1] = !check2[boxNum - 1];
+        if (check2.every(value => value === true)) {
+            document.getElementById("img2").style.display = 'block';
+        } else {
+            document.getElementById("img2").style.display = 'none';
+        }
     } else if (curProg == Status.PROTOTYPING) {
         check3[boxNum - 1] = !check3[boxNum - 1];
+        if (check3.every(value => value === true)) {
+            document.getElementById("img3").style.display = 'block';
+        } else {
+            document.getElementById("img3").style.display = 'none';
+        }
     } else if (curProg == Status.PRESENTATION) {
         check4[boxNum - 1] = !check4[boxNum - 1];
+        if (check4.every(value => value === true)) {
+            document.getElementById("img4").style.display = 'block';
+        } else {
+            document.getElementById("img4").style.display = 'none';
+        }
     }
 }
-
 
 function updateChecklistOptions(selectedOption) {
 
@@ -91,7 +110,6 @@ function updateChecklistOptions(selectedOption) {
     }
 }
 
-
 let loginForm = document.getElementById("loginForm");
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -110,7 +128,6 @@ document.getElementById('signInAgain').addEventListener('click', function () {
 
 });
 
-
 function checkLogin() {
     // console.log(localStorage.getItem('teamNum'));
     if (localStorage.getItem('numLikes') == null) {
@@ -128,22 +145,11 @@ function checkLogin() {
     }
 }
 
-
 function getCheckedCheckboxes() {
     const checkboxes = document.getElementById('hardwareDiv').querySelectorAll('input[type="checkbox"]');
-    
     const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
-
-    // Create an array of values of the checked checkboxes
     const checkedValues = checkedCheckboxes.map(checkbox => checkbox.value);
-    // console.log(checkedValues);
     return checkedValues;
-
-    // const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
-    
-    // // console.log(checkedCheckboxes);
-    // const checkedValues = checkedCheckboxes.map(checkbox => checkbox.id);
-    // alert("Checked Checkboxes: " + checkedValues.join(', '));
   }
 
 // change to your ip address
@@ -156,18 +162,18 @@ ws.onmessage = (e) => {
     
     // console.log(JSON.parse(bufferData));
 
-    const dataArray = JSON.parse(bufferData).data;
+    // const dataArray = JSON.parse(bufferData).data;
 
-    // Convert numeric values to ASCII characters
-    const asciiString = String.fromCharCode(...dataArray);
+    // // Convert numeric values to ASCII characters
+    // const asciiString = String.fromCharCode(...dataArray);
 
-    // Parse the resulting string as JSON
-    const jsonData = JSON.parse(asciiString);
-    // console.log(jsonData.teamNumber);
-    // console.log("hi");
+    // // Parse the resulting string as JSON
+    // const jsonData = JSON.parse(asciiString);
+    // // console.log(jsonData.teamNumber);
+    // // console.log("hi");
 
-    if (localStorage.getItem('teamNum') != null && localStorage.getItem('teamNum') == jsonData.teamNumber) {
-       localStorage.setItem("numLikes", parseInt(localStorage.getItem("numLikes")) + 1);
-       document.getElementById('likes').innerHTML = 'likes: ' + localStorage.getItem('numLikes');
-     }
+    // if (localStorage.getItem('teamNum') != null && localStorage.getItem('teamNum') == jsonData.teamNumber) {
+    //    localStorage.setItem("numLikes", parseInt(localStorage.getItem("numLikes")) + 1);
+    //    document.getElementById('likes').innerHTML = 'likes: ' + localStorage.getItem('numLikes');
+    // }
 };

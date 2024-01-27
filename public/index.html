@@ -52,6 +52,11 @@
 
         <p id="likes"></p>
         <h2>Progress Check</h2>
+        <img id="img1" style="display:none" src="google.com">
+        <img id="img2" style="display:none" src="google.com">
+        <img id="img3" style="display:none" src="google.com">
+        <img id="img4" style="display:none" src="google.com">
+
         <input type="radio" id="problem" name="progress" value="Problem" onclick="updateChecklistOptions('Problem')" checked>
         <label for="problem">Problem</label><br>
         <input type="radio" id="ideation" name="progress" value="Ideation" onclick="updateChecklistOptions('Ideation')">
@@ -63,49 +68,49 @@
     
         <div id="prog-prob">
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p1b1" onclick="saveCheckBox(1)"> a
+                <input type="checkbox" name="check-op" class="op1" id="p1b1" onclick="saveCheckBox(1)"> a
             </label>
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p1b2" onclick="saveCheckBox(2)"> b
+                <input type="checkbox" name="check-op" class="op1" id="p1b2" onclick="saveCheckBox(2)"> b
             </label>
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p1b3" onclick="saveCheckBox(3)"> c
+                <input type="checkbox" name="check-op" class="op1" id="p1b3" onclick="saveCheckBox(3)"> c
             </label>
         </div>
     
         <div id="prog-idea" style="display:none">
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p2b1" onclick="saveCheckBox(1)"> d
+                <input type="checkbox" name="check-op" class="op2" id="p2b1" onclick="saveCheckBox(1)"> d
             </label>
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p2b2" onclick="saveCheckBox(2)"> e
+                <input type="checkbox" name="check-op" class="op2" id="p2b2" onclick="saveCheckBox(2)"> e
             </label>
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p2b3" onclick="saveCheckBox(3)"> f
+                <input type="checkbox" name="check-op" class="op2" id="p2b3" onclick="saveCheckBox(3)"> f
             </label>
         </div>
     
         <div id="prog-proto" style="display:none">
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p3b1" onclick="saveCheckBox(1)"> g
+                <input type="checkbox" name="check-op" class="op3" id="p3b1" onclick="saveCheckBox(1)"> g
             </label>
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p3b2" onclick="saveCheckBox(2)"> h
+                <input type="checkbox" name="check-op" class="op3" id="p3b2" onclick="saveCheckBox(2)"> h
             </label>
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p3b3" onclick="saveCheckBox(3)"> i
+                <input type="checkbox" name="check-op" class="op3" id="p3b3" onclick="saveCheckBox(3)"> i
             </label>
         </div>
     
         <div id="prog-presen" style="display:none">
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p4b1" onclick="saveCheckBox(1)"> j
+                <input type="checkbox" name="check-op" class="op4" id="p4b1" onclick="saveCheckBox(1)"> j
             </label>
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p4b2" onclick="saveCheckBox(2)"> k
+                <input type="checkbox" name="check-op" class="op4" id="p4b2" onclick="saveCheckBox(2)"> k
             </label>
             <label>
-                <input type="checkbox" name="check-op" value="op1" id="p4b3" onclick="saveCheckBox(3)"> l
+                <input type="checkbox" name="check-op" class="op4" id="p4b3" onclick="saveCheckBox(3)"> l
             </label>
         </div>
     
@@ -159,13 +164,13 @@
                 <label>Art</label><br>
 
                 <input type="radio" name="request" value="dev">
-                <label for="dev">Development</label><br>
+                <label>Development</label><br>
 
                 <input type="radio" name="request" value="design">
                 <label>Design</label><br>
 
                 <input type="radio" name="request" value="general">
-                <label for="general">General</label>
+                <label>General</label>
 
             </div>
 
