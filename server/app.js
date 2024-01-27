@@ -20,9 +20,18 @@ wss.on("connection", (ws) => {
 
   ws.on('message', (e) => {
     console.log(JSON.parse(e));
+    if (JSON.parse(e)['teamNumber'] != undefined) {
+
+      console.log(JSON.parse(e)['teamNumber']);
+      // if (localStorage.getItem('teamNum') != null && localStorage.getItem('teamNum') == JSON.parse(e)['teamNumber']) {
+      //   localStorage.setItem("numLikes", localStorage.getItem("numLikes") + 1);
+      //   document.getElementById('likes').innerHTML = 'likes: ' + localStorage.getItem('numLikes');
+      // }
+    }
+
     wss.clients.forEach((client) => {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
-        client.send(e);
+        client.send(JSON.stringify(e));
       }
     })
   });

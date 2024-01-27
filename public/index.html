@@ -9,113 +9,132 @@
     <link rel="stylesheet" href="main.css" />
 </head>
     
-<form>
-   
-    <!-- <table>
-        <tr>
-            <td>Problem: </td>
-            <td><input type="text" id="problem" class="value" placeholder="Ideation"><br></td>
-        </tr>
+<body onload="checkLogin()">
+<div id="loginDiv">
+    <h2>Sign In</h2>
+    <form id="loginForm">
+        Enter your team number:
+        <input type="number" min="1" id="teamNum">
+        <input type="submit" value="Sign In">
+    </form>
 
-        <tr>
-            <td>Track: </td>
-            <td><select name="track" id="track">
-                <option value="Productivity">Productivity</option>
-                <option value="Sustainability">Sustainability</option>
-                <option value="Learning">Learning</option>
-                <option value="Health">Health</option>
-            </select></td>
-        </tr>
+</div>
 
-        <tr>
-            <td>Field???: </td>
-            <td><input type="text" id="field" class="value" placeholder="Project Manager"><br></td>
-        </tr>
-    </table> -->
 
+<div id="mainDiv">
+    <form>
     
-    <br></br>
+        <!-- <table>
+            <tr>
+                <td>Problem: </td>
+                <td><input type="text" id="problem" class="value" placeholder="Ideation"><br></td>
+            </tr>
+    
+            <tr>
+                <td>Track: </td>
+                <td><select name="track" id="track">
+                    <option value="Productivity">Productivity</option>
+                    <option value="Sustainability">Sustainability</option>
+                    <option value="Learning">Learning</option>
+                    <option value="Health">Health</option>
+                </select></td>
+            </tr>
+    
+            <tr>
+                <td>Field???: </td>
+                <td><input type="text" id="field" class="value" placeholder="Project Manager"><br></td>
+            </tr>
+        </table> -->
+    
+        
+        <h1 id="teamNumTitle">Team Number</h1>
 
-    <h2>Progress Check</h2>
-    <input type="radio" id="problem" name="progress" value="Problem" onclick="updateChecklistOptions('Problem')">
-    <label for="problem">Problem</label><br>
-    <input type="radio" id="ideation" name="progress" value="Ideation" onclick="updateChecklistOptions('Ideation')">
-    <label for="ideation">Ideation</label><br>
-    <input type="radio" id="prototyping" name="progress" value="Prototyping" onclick="updateChecklistOptions('Prototyping')" >
-    <label for="prototyping">Prototyping</label>
-    <input type="radio" id="presentation" name="progress" value="Presentation" onclick="updateChecklistOptions('Presentation')">
-    <label for="presentation">Presentation</label>
-
-    <div id="prog-prob">
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box1" onclick="saveCheckBox(1)"> option1
-        </label>
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box2" onclick="saveCheckBox(2)"> option2
-        </label>
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box3" onclick="saveCheckBox(3)"> option3
-        </label>
-    </div>
-
-    <div id="prog-idea">
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box1"> option1
-        </label>
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box2"> option2
-        </label>
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box3"> option3
-        </label>
-    </div>
-
-    <div id="prog-proto">
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box1"> option1
-        </label>
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box2"> option2
-        </label>
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box3"> option3
-        </label>
-    </div>
-
-    <div id="prog-presen">
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box1"> option1
-        </label>
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box2"> option2
-        </label>
-        <label>
-            <input type="checkbox" name="check-op" value="op1" id="box3"> option3
-        </label>
-    </div>
-
-    <!-- <h3>Description</h3>
-    <textarea class="progress-description" placeholder="Describe your progress"></textarea> -->
-
-    <br></br>
-
-    <h3>Hardware</h3>
-        <label>
-            <input type="checkbox" name="hardware" value="quest"> Quest 3
-        </label>
-        <label>
-            <input type="checkbox" name="hardware" value="xreal"> XReal Air2 Pro
-        </label>
-        <label>
-            <input type="checkbox" name="hardware" value="figma"> Figma
-        </label>
-
+        <p id="likes"></p>
+        <h2>Progress Check</h2>
+        <input type="radio" id="problem" name="progress" value="Problem" onclick="updateChecklistOptions('Problem')" checked>
+        <label for="problem">Problem</label><br>
+        <input type="radio" id="ideation" name="progress" value="Ideation" onclick="updateChecklistOptions('Ideation')">
+        <label for="ideation">Ideation</label><br>
+        <input type="radio" id="prototyping" name="progress" value="Prototyping" onclick="updateChecklistOptions('Prototyping')" >
+        <label for="prototyping">Prototyping</label>
+        <input type="radio" id="presentation" name="progress" value="Presentation" onclick="updateChecklistOptions('Presentation')">
+        <label for="presentation">Presentation</label>
+    
+        <div id="prog-prob">
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p1b1" onclick="saveCheckBox(1)"> a
+            </label>
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p1b2" onclick="saveCheckBox(2)"> b
+            </label>
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p1b3" onclick="saveCheckBox(3)"> c
+            </label>
+        </div>
+    
+        <div id="prog-idea" style="display:none">
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p2b1" onclick="saveCheckBox(1)"> d
+            </label>
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p2b2" onclick="saveCheckBox(2)"> e
+            </label>
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p2b3" onclick="saveCheckBox(3)"> f
+            </label>
+        </div>
+    
+        <div id="prog-proto" style="display:none">
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p3b1" onclick="saveCheckBox(1)"> g
+            </label>
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p3b2" onclick="saveCheckBox(2)"> h
+            </label>
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p3b3" onclick="saveCheckBox(3)"> i
+            </label>
+        </div>
+    
+        <div id="prog-presen" style="display:none">
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p4b1" onclick="saveCheckBox(1)"> j
+            </label>
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p4b2" onclick="saveCheckBox(2)"> k
+            </label>
+            <label>
+                <input type="checkbox" name="check-op" value="op1" id="p4b3" onclick="saveCheckBox(3)"> l
+            </label>
+        </div>
+    
+        <!-- <h3>Description</h3>
+        <textarea class="progress-description" placeholder="Describe your progress"></textarea> -->
+    
         <br></br>
+    
+        <h3>Hardware</h3>
+            <label>
+                <input type="checkbox" name="hardware" value="quest"> Quest 3
+            </label>
+            <label>
+                <input type="checkbox" name="hardware" value="xreal"> XReal Air2 Pro
+            </label>
+            <label>
+                <input type="checkbox" name="hardware" value="figma"> Figma
+            </label>
+    
+            <br></br>
+    
+        <input type="button" id="helpButton" value="submit help">
+        <br></br>
+    
+    </form>
 
-    <input type="button" id="helpButton" value="submit help">
-    <br></br>
 
-</form>
+    <input type="button" id="signInAgain" value="this is not my team">
+</div>    
+
 <script>
     
 
@@ -124,10 +143,10 @@
     const form = document.querySelector('form')
 
     const Status = {
-        PROBLEM: 'a',
-        IDEATION: 'b',
-        PROTOTYPING: 'c',
-        PRESENTATION: 'd',
+        PROBLEM: 1,
+        IDEATION: 2,
+        PROTOTYPING: 3,
+        PRESENTATION: 4,
         NONE: 'e'
     };
 
@@ -163,7 +182,7 @@
     function saveCheckBox(boxNum) {
         if (curProg == Status.PROBLEM) {
             check1[boxNum - 1] = !check1[boxNum - 1];
-            document.getElementById(`box${boxNum}`).checked = true;
+            // document.getElementById(`box${boxNum}`).checked = true;
         } else if (curProg == Status.IDEATION) {
             check2[boxNum - 1] = !check2[boxNum - 1];
         } else if (curProg == Status.PROTOTYPING) {
@@ -177,36 +196,95 @@
     function updateChecklistOptions(selectedOption) {
 
      // Add new checklist options based on the selected radio button
-            if (selectedOption === 'Problem') {
-                document.getElementById('prog-prob').style.display = 'block'
-                document.getElementById('prog-idea').style.display = 'none'
-                document.getElementById('prog-proto').style.display = 'none'
-                document.getElementById('prog-presen').style.display = 'none'
-                curProg = Status.PROBLEM;
+        if (selectedOption === 'Problem') {
+            document.getElementById('prog-prob').style.display = 'block'
+            document.getElementById('prog-idea').style.display = 'none'
+            document.getElementById('prog-proto').style.display = 'none'
+            document.getElementById('prog-presen').style.display = 'none'
+            curProg = Status.PROBLEM;
+        
+        } else if (selectedOption === 'Ideation') {
+            document.getElementById('prog-prob').style.display = 'none'
+            document.getElementById('prog-idea').style.display = 'block'
+            document.getElementById('prog-proto').style.display = 'none'
+            document.getElementById('prog-presen').style.display = 'none'
+            curProg = Status.IDEATION;
             
-            } else if (selectedOption === 'Ideation') {
-                document.getElementById('prog-prob').style.display = 'none'
-                document.getElementById('prog-idea').style.display = 'block'
-                document.getElementById('prog-proto').style.display = 'none'
-                document.getElementById('prog-presen').style.display = 'none'
-                curProg = Status.IDEATION;
-              
-            } else if (selectedOption === 'Prototyping') {
-                document.getElementById('prog-prob').style.display = 'none'
-                document.getElementById('prog-idea').style.display = 'none'
-                document.getElementById('prog-proto').style.display = 'block'
-                document.getElementById('prog-presen').style.display = 'none'
-               
-            } else if (selectedOption === 'Presentation') {
-                document.getElementById('prog-prob').style.display = 'none'
-                document.getElementById('prog-idea').style.display = 'none'
-                document.getElementById('prog-proto').style.display = 'block'
-                document.getElementById('prog-presen').style.display = 'none'
-               
-            }
+        } else if (selectedOption === 'Prototyping') {
+            document.getElementById('prog-prob').style.display = 'none'
+            document.getElementById('prog-idea').style.display = 'none'
+            document.getElementById('prog-proto').style.display = 'block'
+            document.getElementById('prog-presen').style.display = 'none'
+            curProg = Status.PROTOTYPING;
+            
+        } else if (selectedOption === 'Presentation') {
+            document.getElementById('prog-prob').style.display = 'none'
+            document.getElementById('prog-idea').style.display = 'none'
+            document.getElementById('prog-proto').style.display = 'none'
+            document.getElementById('prog-presen').style.display = 'block'
+            curProg = Status.PRESENTATION;
+        }
+    }
+
+
+    let loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        console.log(e)
+        let teamNum = document.getElementById("teamNum");
+        localStorage.setItem("teamNum", document.getElementById("teamNum").value)
+        document.getElementById('loginDiv').style.display = 'none';
+        document.getElementById('mainDiv').style.display = 'block';
+        document.getElementById('teamNumTitle').innerHTML = `Team Number ${localStorage.getItem('teamNum')}`;
+    });
+
+    function checkLogin() {
+        console.log(localStorage.getItem('teamNum'));
+        if (localStorage.getItem('numLikes') == null) {
+            localStorage.setItem("numLikes", 0);
         }
 
-    
+        document.getElementById('likes').innerHTML = 'likes: ' + localStorage.getItem('numLikes');
+        if (localStorage.getItem('teamNum') == null){
+            document.getElementById('loginDiv').style.display = 'block';
+            document.getElementById('mainDiv').style.display = 'none';
+        } else {
+            document.getElementById('loginDiv').style.display = 'none';
+            document.getElementById('mainDiv').style.display = 'block';
+            document.getElementById('teamNumTitle').innerHTML = `Team Number ${localStorage.getItem('teamNum')}`;
+        }
+    }
+
+
+    document.getElementById('signInAgain').addEventListener('click', function () {
+
+        document.getElementById('loginDiv').style.display = 'block';
+        document.getElementById('mainDiv').style.display = 'none';
+
+    });
+
+
+    ws.onmessage = (e) => {
+        const bufferData = e.data;
+        console.log(typeof bufferData);
+        
+        console.log(JSON.parse(bufferData));
+
+        const dataArray = JSON.parse(bufferData).data;
+
+        // Convert numeric values to ASCII characters
+        const asciiString = String.fromCharCode(...dataArray);
+
+        // Parse the resulting string as JSON
+        const jsonData = JSON.parse(asciiString);
+        console.log(jsonData.teamNumber);
+        console.log("hi");
+
+        if (localStorage.getItem('teamNum') != null && localStorage.getItem('teamNum') == jsonData.teamNumber) {
+           localStorage.setItem("numLikes", parseInt(localStorage.getItem("numLikes")) + 1);
+           document.getElementById('likes').innerHTML = 'likes: ' + localStorage.getItem('numLikes');
+         }
+    };
 </script>
 </body>
 
