@@ -2,16 +2,19 @@
 
 <html lang="en">
 
-<head></head>
-
-<body>
+<head>
+    <title>Bibabu</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="main.css" />
+</head>
+    
 <form>
-
-    <table>
+   
+    <!-- <table>
         <tr>
             <td>Problem: </td>
             <td><input type="text" id="problem" class="value" placeholder="Ideation"><br></td>
-            <!-- tech spec -->
         </tr>
 
         <tr>
@@ -28,27 +31,133 @@
             <td>Field???: </td>
             <td><input type="text" id="field" class="value" placeholder="Project Manager"><br></td>
         </tr>
-    </table>
+    </table> -->
+
+    
+    <br></br>
+
+    <h2>Progress Check</h2>
+    <input type="radio" id="problem" name="progress" value="Problem" onclick="updateChecklistOptions('Problem')">
+    <label for="problem">Problem</label><br>
+    <input type="radio" id="ideation" name="progress" value="Ideation" onclick="updateChecklistOptions('Ideation')">
+    <label for="ideation">Ideation</label><br>
+    <input type="radio" id="prototyping" name="progress" value="Prototyping" onclick="updateChecklistOptions('Prototyping')" >
+    <label for="prototyping">Prototyping</label>
+    <input type="radio" id="presentation" name="progress" value="Presentation" onclick="updateChecklistOptions('Presentation')">
+    <label for="presentation">Presentation</label>
+
+    <div id="progress-checklist">
+        <label>
+            <input type="checkbox" name="check-op" value="op1"> option1
+        </label>
+        <label>
+            <input type="checkbox" name="check-op" value="op1"> option2
+        </label>
+        <label>
+            <input type="checkbox" name="check-op" value="op1"> option3
+        </label>
+    </div>
+
+    <!-- <h3>Description</h3>
+    <textarea class="progress-description" placeholder="Describe your progress"></textarea> -->
+
+    <br></br>
+
+    <h3>Hardware</h3>
+        <label>
+            <input type="checkbox" name="hardware" value="quest"> Quest 3
+        </label>
+        <label>
+            <input type="checkbox" name="hardware" value="xreal"> XReal Air2 Pro
+        </label>
+        <label>
+            <input type="checkbox" name="hardware" value="figma"> Figma
+        </label>
+
+        <br></br>
 
     <input type="button" id="helpButton" value="submit help">
+    <br></br>
 
 </form>
 <script>
+    
     const ws = new WebSocket('ws://localhost:8082');
     const form = document.querySelector('form')
 
     document.getElementById('helpButton').addEventListener('click', function () {
 
-        const problem = document.getElementById('problem').value;
-        const track = document.getElementById('track').value;
-        const field = document.getElementById('field').value;
+        // const problem = document.getElementById('problem').value;
+        // const track = document.getElementById('track').value;
+        // const field = document.getElementById('field').value;
 
-        // Create a message object with user inputs
-        const message = { problem, track, field };
+
+        // // Create a message object with user inputs
+         const message = { };
 
         // Send the message as JSON to the WebSocket server
         ws.send(JSON.stringify(message));
     });
+
+
+    var checklistContainer = document.getElementById('progress-checklist');
+
+    function updateChecklistOptions(selectedOption) {
+         checklistContainer.innerHTML = '';
+
+     // Add new checklist options based on the selected radio button
+            if (selectedOption === 'Problem') {
+                checklistContainer.innerHTML += `
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> bi
+                    </label>
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> ba
+                    </label>
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> bu
+                    </label>
+                `;
+            } else if (selectedOption === 'Ideation') {
+                checklistContainer.innerHTML += `
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> bu
+                    </label>
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> bi
+                    </label>
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> be
+                     </label>
+                `;
+            } else if (selectedOption === 'Prototyping') {
+                checklistContainer.innerHTML += `
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> bu
+                    </label>
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> bi
+                    </label>
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> be
+                     </label>
+                `;
+            } else if (selectedOption === 'Presentation') {
+                checklistContainer.innerHTML += `
+                     <label>
+                        <input type="checkbox" name="check-op" value="op1"> bu
+                    </label>
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> bi
+                    </label>
+                    <label>
+                        <input type="checkbox" name="check-op" value="op1"> be
+                     </label>
+                `;
+            }
+        }
+    
+    
 </script>
 </body>
 
