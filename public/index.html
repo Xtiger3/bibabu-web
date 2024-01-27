@@ -46,15 +46,51 @@
     <input type="radio" id="presentation" name="progress" value="Presentation" onclick="updateChecklistOptions('Presentation')">
     <label for="presentation">Presentation</label>
 
-    <div id="progress-checklist">
+    <div id="prog-prob">
         <label>
-            <input type="checkbox" name="check-op" value="op1"> option1
+            <input type="checkbox" name="check-op" value="op1" id="box1" onclick="saveCheckBox(1)"> option1
         </label>
         <label>
-            <input type="checkbox" name="check-op" value="op1"> option2
+            <input type="checkbox" name="check-op" value="op1" id="box2" onclick="saveCheckBox(2)"> option2
         </label>
         <label>
-            <input type="checkbox" name="check-op" value="op1"> option3
+            <input type="checkbox" name="check-op" value="op1" id="box3" onclick="saveCheckBox(3)"> option3
+        </label>
+    </div>
+
+    <div id="prog-idea">
+        <label>
+            <input type="checkbox" name="check-op" value="op1" id="box1"> option1
+        </label>
+        <label>
+            <input type="checkbox" name="check-op" value="op1" id="box2"> option2
+        </label>
+        <label>
+            <input type="checkbox" name="check-op" value="op1" id="box3"> option3
+        </label>
+    </div>
+
+    <div id="prog-proto">
+        <label>
+            <input type="checkbox" name="check-op" value="op1" id="box1"> option1
+        </label>
+        <label>
+            <input type="checkbox" name="check-op" value="op1" id="box2"> option2
+        </label>
+        <label>
+            <input type="checkbox" name="check-op" value="op1" id="box3"> option3
+        </label>
+    </div>
+
+    <div id="prog-presen">
+        <label>
+            <input type="checkbox" name="check-op" value="op1" id="box1"> option1
+        </label>
+        <label>
+            <input type="checkbox" name="check-op" value="op1" id="box2"> option2
+        </label>
+        <label>
+            <input type="checkbox" name="check-op" value="op1" id="box3"> option3
         </label>
     </div>
 
@@ -82,81 +118,94 @@
 </form>
 <script>
     
-    const ws = new WebSocket('ws://localhost:8082');
+
+    // change to your ip address
+    const ws = new WebSocket('ws://10.29.183.155:8082');
     const form = document.querySelector('form')
+
+    const Status = {
+        PROBLEM: 'a',
+        IDEATION: 'b',
+        PROTOTYPING: 'c',
+        PRESENTATION: 'd',
+        NONE: 'e'
+    };
+
+    let curProg = Status.NONE;
+
+    let check1 = [false, false, false]
+    let check2 = [false, false, false]
+    let check3 = [false, false, false]
+    let check4 = [false, false, false]
 
     document.getElementById('helpButton').addEventListener('click', function () {
 
         // const problem = document.getElementById('problem').value;
         // const track = document.getElementById('track').value;
         // const field = document.getElementById('field').value;
-
-
+        const selectedOption = document.querySelector('input[name="progress"]:checked');
+        console.log(selectedOption.getAttribute("value"));
         // // Create a message object with user inputs
-         const message = { };
+        const message = { };
 
         // Send the message as JSON to the WebSocket server
         ws.send(JSON.stringify(message));
+
+        localStorage.setItem('check1', check1);
+        localStorage.setItem('check2', check2);
+        localStorage.setItem('check3', check3);
+        localStorage.setItem('check4', check4);
+
     });
 
+   // var checklistContainer = document.getElementById('progress-checklist');
 
-    var checklistContainer = document.getElementById('progress-checklist');
+    function saveCheckBox(boxNum) {
+        if (curProg == Status.PROBLEM) {
+            check1[boxNum - 1] = !check1[boxNum - 1];
+            document.getElementById(`box${boxNum}`).checked = true;
+        } else if (curProg == Status.IDEATION) {
+            check2[boxNum - 1] = !check2[boxNum - 1];
+        } else if (curProg == Status.PROTOTYPING) {
+            check3[boxNum - 1] = !check3[boxNum - 1];
+        } else if (curProg == Status.PRESENTATION) {
+            check4[boxNum - 1] = !check4[boxNum - 1];
+        }
+    }
+
 
     function updateChecklistOptions(selectedOption) {
-         checklistContainer.innerHTML = '';
 
      // Add new checklist options based on the selected radio button
             if (selectedOption === 'Problem') {
-                checklistContainer.innerHTML += `
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> bi
-                    </label>
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> ba
-                    </label>
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> bu
-                    </label>
-                `;
+                document.getElementById('prog-prob').style.display = 'block'
+                document.getElementById('prog-idea').style.display = 'none'
+                document.getElementById('prog-proto').style.display = 'none'
+                document.getElementById('prog-presen').style.display = 'none'
+                curProg = Status.PROBLEM;
+            
             } else if (selectedOption === 'Ideation') {
-                checklistContainer.innerHTML += `
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> bu
-                    </label>
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> bi
-                    </label>
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> be
-                     </label>
-                `;
+                document.getElementById('prog-prob').style.display = 'none'
+                document.getElementById('prog-idea').style.display = 'block'
+                document.getElementById('prog-proto').style.display = 'none'
+                document.getElementById('prog-presen').style.display = 'none'
+                curProg = Status.IDEATION;
+              
             } else if (selectedOption === 'Prototyping') {
-                checklistContainer.innerHTML += `
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> bu
-                    </label>
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> bi
-                    </label>
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> be
-                     </label>
-                `;
+                document.getElementById('prog-prob').style.display = 'none'
+                document.getElementById('prog-idea').style.display = 'none'
+                document.getElementById('prog-proto').style.display = 'block'
+                document.getElementById('prog-presen').style.display = 'none'
+               
             } else if (selectedOption === 'Presentation') {
-                checklistContainer.innerHTML += `
-                     <label>
-                        <input type="checkbox" name="check-op" value="op1"> bu
-                    </label>
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> bi
-                    </label>
-                    <label>
-                        <input type="checkbox" name="check-op" value="op1"> be
-                     </label>
-                `;
+                document.getElementById('prog-prob').style.display = 'none'
+                document.getElementById('prog-idea').style.display = 'none'
+                document.getElementById('prog-proto').style.display = 'block'
+                document.getElementById('prog-presen').style.display = 'none'
+               
             }
         }
-    
+
     
 </script>
 </body>
