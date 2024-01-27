@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="main.css" />
+    <!-- <script src="main.js"></script> -->
 </head>
     
 <body onload="checkLogin()">
@@ -113,7 +114,29 @@
     
         <br></br>
     
-        <h3>Hardware</h3>
+
+        <div id="tracjDiv">
+            
+            <h3>What is your track</h3>
+
+            <input type="radio" name="track" value="Productivity" checked>
+            <label>Productivity</label><br>
+
+            <input type="radio" name="track" value="Sustainability">
+            <label>Sustainability</label><br>
+
+            <input type="radio" name="track" value="Learning">
+            <label>Learning</label><br>
+
+            <input type="radio" name="track" value="Health">
+            <label>Health</label>
+            
+        </div>
+
+
+        <div id="hardwareDiv">
+            
+            <h3>Hardware</h3>
             <label>
                 <input type="checkbox" name="hardware" value="quest"> Quest 3
             </label>
@@ -123,169 +146,46 @@
             <label>
                 <input type="checkbox" name="hardware" value="figma"> Figma
             </label>
-    
-            <br></br>
+            
+        </div>
+
+        <div id="requestDiv">
+            
+            <h3>Create a request ticket</h3>
+
+            <p>Choose a request type</p>
+            <div id="requestTypeDiv">
+                <input type="radio" name="request" value="art" checked>
+                <label>Art</label><br>
+
+                <input type="radio" name="request" value="dev">
+                <label for="dev">Development</label><br>
+
+                <input type="radio" name="request" value="design">
+                <label>Design</label><br>
+
+                <input type="radio" name="request" value="general">
+                <label for="general">General</label>
+
+            </div>
+
+            <p>Describe your problem</p>
+            <input type="text" id="problemDescription" placeholder="We have a networking problem with websocket">
+            <br><br>
+            
+        </div>
+
     
         <input type="button" id="helpButton" value="submit help">
-        <br></br>
+        <br><br>
     
     </form>
 
 
     <input type="button" id="signInAgain" value="this is not my team">
-</div>    
+</div>
 
-<script>
-    
-
-    // change to your ip address
-    const ws = new WebSocket('ws://10.29.183.155:8082');
-    const form = document.querySelector('form')
-
-    const Status = {
-        PROBLEM: 1,
-        IDEATION: 2,
-        PROTOTYPING: 3,
-        PRESENTATION: 4,
-        NONE: 'e'
-    };
-
-    let curProg = Status.NONE;
-
-    let check1 = [false, false, false]
-    let check2 = [false, false, false]
-    let check3 = [false, false, false]
-    let check4 = [false, false, false]
-
-    document.getElementById('helpButton').addEventListener('click', function () {
-
-        // const problem = document.getElementById('problem').value;
-        // const track = document.getElementById('track').value;
-        // const field = document.getElementById('field').value;
-        const selectedOption = document.querySelector('input[name="progress"]:checked');
-        console.log(selectedOption.getAttribute("value"));
-        // // Create a message object with user inputs
-        const message = { };
-
-        // Send the message as JSON to the WebSocket server
-        ws.send(JSON.stringify(message));
-
-        localStorage.setItem('check1', check1);
-        localStorage.setItem('check2', check2);
-        localStorage.setItem('check3', check3);
-        localStorage.setItem('check4', check4);
-
-    });
-
-   // var checklistContainer = document.getElementById('progress-checklist');
-
-    function saveCheckBox(boxNum) {
-        if (curProg == Status.PROBLEM) {
-            check1[boxNum - 1] = !check1[boxNum - 1];
-            // document.getElementById(`box${boxNum}`).checked = true;
-        } else if (curProg == Status.IDEATION) {
-            check2[boxNum - 1] = !check2[boxNum - 1];
-        } else if (curProg == Status.PROTOTYPING) {
-            check3[boxNum - 1] = !check3[boxNum - 1];
-        } else if (curProg == Status.PRESENTATION) {
-            check4[boxNum - 1] = !check4[boxNum - 1];
-        }
-    }
-
-
-    function updateChecklistOptions(selectedOption) {
-
-     // Add new checklist options based on the selected radio button
-        if (selectedOption === 'Problem') {
-            document.getElementById('prog-prob').style.display = 'block'
-            document.getElementById('prog-idea').style.display = 'none'
-            document.getElementById('prog-proto').style.display = 'none'
-            document.getElementById('prog-presen').style.display = 'none'
-            curProg = Status.PROBLEM;
-        
-        } else if (selectedOption === 'Ideation') {
-            document.getElementById('prog-prob').style.display = 'none'
-            document.getElementById('prog-idea').style.display = 'block'
-            document.getElementById('prog-proto').style.display = 'none'
-            document.getElementById('prog-presen').style.display = 'none'
-            curProg = Status.IDEATION;
-            
-        } else if (selectedOption === 'Prototyping') {
-            document.getElementById('prog-prob').style.display = 'none'
-            document.getElementById('prog-idea').style.display = 'none'
-            document.getElementById('prog-proto').style.display = 'block'
-            document.getElementById('prog-presen').style.display = 'none'
-            curProg = Status.PROTOTYPING;
-            
-        } else if (selectedOption === 'Presentation') {
-            document.getElementById('prog-prob').style.display = 'none'
-            document.getElementById('prog-idea').style.display = 'none'
-            document.getElementById('prog-proto').style.display = 'none'
-            document.getElementById('prog-presen').style.display = 'block'
-            curProg = Status.PRESENTATION;
-        }
-    }
-
-
-    let loginForm = document.getElementById("loginForm");
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        console.log(e)
-        let teamNum = document.getElementById("teamNum");
-        localStorage.setItem("teamNum", document.getElementById("teamNum").value)
-        document.getElementById('loginDiv').style.display = 'none';
-        document.getElementById('mainDiv').style.display = 'block';
-        document.getElementById('teamNumTitle').innerHTML = `Team Number ${localStorage.getItem('teamNum')}`;
-    });
-
-    function checkLogin() {
-        console.log(localStorage.getItem('teamNum'));
-        if (localStorage.getItem('numLikes') == null) {
-            localStorage.setItem("numLikes", 0);
-        }
-
-        document.getElementById('likes').innerHTML = 'likes: ' + localStorage.getItem('numLikes');
-        if (localStorage.getItem('teamNum') == null){
-            document.getElementById('loginDiv').style.display = 'block';
-            document.getElementById('mainDiv').style.display = 'none';
-        } else {
-            document.getElementById('loginDiv').style.display = 'none';
-            document.getElementById('mainDiv').style.display = 'block';
-            document.getElementById('teamNumTitle').innerHTML = `Team Number ${localStorage.getItem('teamNum')}`;
-        }
-    }
-
-
-    document.getElementById('signInAgain').addEventListener('click', function () {
-
-        document.getElementById('loginDiv').style.display = 'block';
-        document.getElementById('mainDiv').style.display = 'none';
-
-    });
-
-
-    ws.onmessage = (e) => {
-        const bufferData = e.data;
-        console.log(typeof bufferData);
-        
-        console.log(JSON.parse(bufferData));
-
-        const dataArray = JSON.parse(bufferData).data;
-
-        // Convert numeric values to ASCII characters
-        const asciiString = String.fromCharCode(...dataArray);
-
-        // Parse the resulting string as JSON
-        const jsonData = JSON.parse(asciiString);
-        console.log(jsonData.teamNumber);
-        console.log("hi");
-
-        if (localStorage.getItem('teamNum') != null && localStorage.getItem('teamNum') == jsonData.teamNumber) {
-           localStorage.setItem("numLikes", parseInt(localStorage.getItem("numLikes")) + 1);
-           document.getElementById('likes').innerHTML = 'likes: ' + localStorage.getItem('numLikes');
-         }
-    };
-</script>
+<script src="main.js"></script>
 </body>
 
 </html>
