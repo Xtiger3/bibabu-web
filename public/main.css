@@ -9,7 +9,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: #606060;
+    color: #514569;
     font-weight: 700;
 }
 
@@ -94,7 +94,6 @@ input[type="submit"] {
 }
 
 #teamNumTitle{
-    color: black;
     font-size: 50px;
     /* background-color: red; */
     /* height: 36px; */
@@ -123,7 +122,7 @@ input[type="submit"] {
     background-color: white;
     padding: 2% 5%;
     border-radius: 30px;
-    box-shadow: 5px 5px 5px rgba(211, 220, 255, .5);
+    box-shadow: 0px 4px 16px rgba(211, 220, 255, .5);
 }
 
 /* #helprequest-container{
@@ -254,5 +253,43 @@ input[type="submit"] {
     width: 10em;
     height:  5em;
     border: none;
+    background-color: transparent;
 }
 
+input[type='radio'] {
+    accent-color: #5200FF;
+}
+
+
+#checkbox-container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 20px 50px 20px;
+}
+
+#checkbox-container label {
+    display: block;
+    margin: 20px
+    
+}
+
+textarea {
+    height: 150px;
+    /* Adjust the height as needed */
+    border-radius: 8px;
+    /* Adjust the border-radius for rounded corners */
+    padding: 10px;
+    /* Optional: Add padding to provide some space within the textarea */
+    resize: none;
+    border: 1px solid #D3DCFF;
+}
+
+#helpButton {
+    background: linear-gradient(45deg, #7000FF, #5200FF);
+    color: white;
+    padding: 20px 60px 20px 60px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 20px;
+}
