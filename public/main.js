@@ -56,34 +56,34 @@ function saveCheckBox(boxNum) {
     if (curProg == Status.PROBLEM) {
         check1[boxNum - 1] = !check1[boxNum - 1];
         if (check1.every(value => value === true)) {
-            document.getElementById("img1").style.display = 'block';
+            document.getElementById("img1").style.opacity = 1;
         } else {
-            document.getElementById("img1").style.display = 'none';
+            document.getElementById("img1").style.opacity = 0;
         }
         // document.getElementById(`box${boxNum}`).checked = true;
         localStorage.setItem('check1', check1);
     } else if (curProg == Status.IDEATION) {
         check2[boxNum - 1] = !check2[boxNum - 1];
         if (check2.every(value => value === true)) {
-            document.getElementById("img2").style.display = 'block';
+            document.getElementById("img2").style.opacity = 1;
         } else {
-            document.getElementById("img2").style.display = 'none';
+            document.getElementById("img2").style.opacity = 0;
         }
         localStorage.setItem('check2', check2);
     } else if (curProg == Status.PROTOTYPING) {
         check3[boxNum - 1] = !check3[boxNum - 1];
         if (check3.every(value => value === true)) {
-            document.getElementById("img3").style.display = 'block';
+            document.getElementById("img3").style.opacity = 1;
         } else {
-            document.getElementById("img3").style.display = 'none';
+            document.getElementById("img3").style.opacity = 0;
         }
         localStorage.setItem('check3', check3);
     } else if (curProg == Status.PRESENTATION) {
         check4[boxNum - 1] = !check4[boxNum - 1];
         if (check4.every(value => value === true)) {
-            document.getElementById("img4").style.display = 'block';
+            document.getElementById("img4").style.opacity = 1;
         } else {
-            document.getElementById("img4").style.display = 'none';
+            document.getElementById("img4").style.opacity = 0;
         }
         localStorage.setItem('check4', check4);
     }
@@ -212,16 +212,16 @@ function loadMain() {
     }
 
     if (check1.every(value => value === true)) {
-        document.getElementById("img1").style.display = 'block';
+        document.getElementById("img1").style.opacity = 1;
     } 
     if (check2.every(value => value === true)) {
-        document.getElementById("img2").style.display = 'block';
+        document.getElementById("img2").style.opacity = 1;
     }
     if (check3.every(value => value === true)) {
-        document.getElementById("img3").style.display = 'block';
+        document.getElementById("img3").style.opacity = 1;
     } 
     if (check4.every(value => value === true)) {
-        document.getElementById("img4").style.display = 'block';
+        document.getElementById("img4").style.opacity = 1;
     }
 
     updateCheckboxes(check1, 'op1');
