@@ -77,6 +77,13 @@ function updateChecklistOptions(selectedOption) {
         document.getElementById('op2').style.display = 'none'
         document.getElementById('op3').style.display = 'none'
         document.getElementById('op4').style.display = 'none'
+
+        document.getElementById('backing1').style.backgroundColor = '#EEF2FF'
+        document.getElementById('backing2').style.backgroundColor = 'white'
+        document.getElementById('backing3').style.backgroundColor = 'white'
+        document.getElementById('backing4').style.backgroundColor = 'white'
+
+
         curProg = Status.PROBLEM;
     
     } else if (selectedOption === 'Ideation') {
@@ -84,6 +91,12 @@ function updateChecklistOptions(selectedOption) {
         document.getElementById('op2').style.display = 'block'
         document.getElementById('op3').style.display = 'none'
         document.getElementById('op4').style.display = 'none'
+
+        document.getElementById('backing1').style.backgroundColor = 'white'
+        document.getElementById('backing2').style.backgroundColor = '#EEF2FF'
+        document.getElementById('backing3').style.backgroundColor = 'white'
+        document.getElementById('backing4').style.backgroundColor = 'white'
+
         curProg = Status.IDEATION;
         
     } else if (selectedOption === 'Prototyping') {
@@ -91,6 +104,11 @@ function updateChecklistOptions(selectedOption) {
         document.getElementById('op2').style.display = 'none'
         document.getElementById('op3').style.display = 'block'
         document.getElementById('op4').style.display = 'none'
+
+        document.getElementById('backing1').style.backgroundColor = 'white'
+        document.getElementById('backing2').style.backgroundColor = 'white'
+        document.getElementById('backing3').style.backgroundColor = '#EEF2FF'
+        document.getElementById('backing4').style.backgroundColor = 'white'
         curProg = Status.PROTOTYPING;
         
     } else if (selectedOption === 'Presentation') {
@@ -98,6 +116,12 @@ function updateChecklistOptions(selectedOption) {
         document.getElementById('op2').style.display = 'none'
         document.getElementById('op3').style.display = 'none'
         document.getElementById('op4').style.display = 'block'
+
+        document.getElementById('backing1').style.backgroundColor = 'white'
+        document.getElementById('backing2').style.backgroundColor = 'white'
+        document.getElementById('backing3').style.backgroundColor = 'white'
+        document.getElementById('backing4').style.backgroundColor = '#EEF2FF'
+
         curProg = Status.PRESENTATION;
     }
 }
@@ -110,7 +134,7 @@ loginForm.addEventListener("submit", (e) => {
     localStorage.setItem("teamNum", document.getElementById("teamNum").value)
     document.getElementById('loginDiv').style.display = 'none';
     document.getElementById('mainDiv').style.display = 'block';
-    document.getElementById('teamNumTitle').innerHTML = `Team Number ${localStorage.getItem('teamNum')}`;
+    document.getElementById('teamNumTitle').innerHTML = `Team # ${localStorage.getItem('teamNum')}`;
 });
 
 document.getElementById('signInAgain').addEventListener('click', function () {
@@ -125,7 +149,7 @@ function loadMain() {
     if (localStorage.getItem('numLikes') == null) {
         localStorage.setItem("numLikes", 0);
     }
-    document.getElementById('likes').innerHTML = 'likes: ' + localStorage.getItem('numLikes');
+    document.getElementById('likes').innerHTML = localStorage.getItem('numLikes');
 
     // load teamNum
     if (localStorage.getItem('teamNum') == null){
@@ -134,7 +158,7 @@ function loadMain() {
     } else {
         document.getElementById('loginDiv').style.display = 'none';
         document.getElementById('mainDiv').style.display = 'block';
-        document.getElementById('teamNumTitle').innerHTML = `Team Number ${localStorage.getItem('teamNum')}`;
+        document.getElementById('teamNumTitle').innerHTML = `Team # ${localStorage.getItem('teamNum')}`;
     }
 
     // load checklist
@@ -202,7 +226,7 @@ ws.onmessage = (e) => {
         if (jsonData['likedTeamNum'] != undefined) {
             if (localStorage.getItem('teamNum') != null && localStorage.getItem('teamNum') == jsonData['likedTeamNum']) {
                 localStorage.setItem("numLikes", parseInt(localStorage.getItem("numLikes")) + 1);
-                document.getElementById('likes').innerHTML = 'likes: ' + localStorage.getItem('numLikes');
+                document.getElementById('likes').innerHTML = localStorage.getItem('numLikes');
             }
         }
     };
