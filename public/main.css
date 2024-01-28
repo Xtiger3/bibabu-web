@@ -241,7 +241,7 @@ font-size: 20px;
 
 #hardware-options label{
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 2%;
     width: fit-content;
     margin: 1% 0%;
@@ -310,12 +310,12 @@ input[type='radio'] {
 #checkbox-container {
     display: flex;
     flex-direction: column;
-    padding: 50px 20px 50px 20px;
+    padding: 30px 20px 200px 20px;
 }
 
 #checkbox-container label {
     display: block;
-    margin: 20px
+    margin: 10px 20px
     
 }
 

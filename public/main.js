@@ -69,6 +69,21 @@ function saveCheckBox(boxNum) {
     }
 }
 
+
+var checkboxes = document.querySelectorAll('#hardware-options input[type="checkbox"]');
+
+checkboxes.forEach(function (checkbox) {
+    checkbox.addEventListener('change', function () {
+        // Change the background color when a checkbox is clicked
+        if (this.checked) {
+            this.parentNode.style.backgroundColor = '#EEF2FF'; // Change to your desired color
+        } else {
+            this.parentNode.style.backgroundColor = ''; // Reset to default background color
+        }
+    });
+});
+
+
 function updateChecklistOptions(selectedOption) {
 
  // Add new checklist options based on the selected radio button
@@ -231,4 +246,7 @@ ws.onmessage = (e) => {
         }
     };
     reader.readAsText(blobData);
+
+
+    
 };
