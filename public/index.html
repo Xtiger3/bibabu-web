@@ -54,24 +54,24 @@
                     <div id="prog-header">
                         <div class="prog-button">
                             <img id="img1" style="display:none" src="prog_button_icon.png">
-                            <input type="radio" id="problem" name="progress" value="Problem"
+                            <input type="radio" id="problem" name="progress" value="1"
                             onclick="updateChecklistOptions('Problem')" checked>
                             <label for="problem">Problem</label>
                         </div>
                         <div class="prog-button">
                             <img id="img2" style="display:none" src="prog_button_icon.png">
-                            <input type="radio" id="ideation" name="progress" value="Ideation" onclick="updateChecklistOptions('Ideation')">
+                            <input type="radio" id="ideation" name="progress" value="2" onclick="updateChecklistOptions('Ideation')">
                             <label for="ideation">Ideation</label>
                         </div>
                         <div class="prog-button">
                             <img id="img3" style="display:none" src="prog_button_icon.png">
-                            <input type="radio" id="prototyping" name="progress" value="Prototyping"
+                            <input type="radio" id="prototyping" name="progress" value="3"
                                 onclick="updateChecklistOptions('Prototyping')">
                             <label for="prototyping">Prototyping</label>
                         </div>
                         <div class="prog-button">
                             <img id="img4" style="display:none" src="prog_button_icon.png">
-                            <input type="radio" id="presentation" name="progress" value="Presentation"
+                            <input type="radio" id="presentation" name="progress" value="4"
                                 onclick="updateChecklistOptions('Presentation')">
                             <label for="presentation">Presentation</label>
                         </div>
@@ -93,40 +93,43 @@
 
                     <div  id="op2" style="display:none">
                         <label>
-                            <input type="checkbox" name="check-op" id="p2b1" onclick="saveCheckBox(1)"> d
+                            <input type="checkbox" name="check-op" id="p2b1" onclick="saveCheckBox(1)"> Facilitate creative brainstorming sessions
                         </label>
                         <label>
-                            <input type="checkbox" name="check-op" id="p2b2" onclick="saveCheckBox(2)"> e
+                            <input type="checkbox" name="check-op" id="p2b2" onclick="saveCheckBox(2)"> Evaluate ideas for feasibility
                         </label>
                         <label>
-                            <input type="checkbox" name="check-op" id="p2b3" onclick="saveCheckBox(3)"> f
+                            <input type="checkbox" name="check-op" id="p2b3" onclick="saveCheckBox(3)"> Ensure alignment with project goals
                         </label>
                     </div>
 
                     <div  id="op3" style="display:none">
                         <label>
-                            <input type="checkbox" name="check-op"  id="p3b1" onclick="saveCheckBox(1)"> g
+                            <input type="checkbox" name="check-op"  id="p3b1" onclick="saveCheckBox(1)"> Structure a clear presentation
                         </label>
                         <label>
-                            <input type="checkbox" name="check-op"  id="p3b2" onclick="saveCheckBox(2)"> h
+                            <input type="checkbox" name="check-op"  id="p3b2" onclick="saveCheckBox(2)"> Use effective visual aids
                         </label>
                         <label>
-                            <input type="checkbox" name="check-op"  id="p3b3" onclick="saveCheckBox(3)"> i
+                            <input type="checkbox" name="check-op"  id="p3b3" onclick="saveCheckBox(3)"> Tailor content to the audience
                         </label>
                     </div>
 
                     <div  id="op4" style="display:none">
                         <label>
-                            <input type="checkbox" name="check-op"   id="p4b1" onclick="saveCheckBox(1)"> j
+                            <input type="checkbox" name="check-op"   id="p4b1" onclick="saveCheckBox(1)"> Develop a functional prototype
                         </label>
                         <label>
-                            <input type="checkbox" name="check-op"   id="p4b2" onclick="saveCheckBox(2)"> k
+                            <input type="checkbox" name="check-op"   id="p4b2" onclick="saveCheckBox(2)"> Prioritize user experience
                         </label>
                         <label>
-                            <input type="checkbox" name="check-op"   id="p4b3" onclick="saveCheckBox(3)"> l
+                            <input type="checkbox" name="check-op"   id="p4b3" onclick="saveCheckBox(3)"> Assess scalability and feasibility
                         </label>
                     </div>
                 </div>
+                <br><br>
+                <br><br>
+                <br><br>
                 </div>
                 </div>
 
@@ -162,13 +165,13 @@
                         <h3>Hardware:</h3>
                         <div class="help-options" id="hardware-options">
                         <label>
-                            <input type="checkbox" name="hardware" value="quest"> Quest 3
+                            <input type="checkbox" name="hardware" value="0"> Quest 3
                         </label>
                         <label>
-                            <input type="checkbox" name="hardware" value="xreal"> XReal Air2 Pro
+                            <input type="checkbox" name="hardware" value="1"> XReal Air2 Pro
                         </label>
                         <label>
-                            <input type="checkbox" name="hardware" value="figma"> Figma
+                            <input type="checkbox" name="hardware" value="2"> Leia
                         </label>
                         </div>
                     </div>
@@ -196,20 +199,15 @@
                         <h3>Problem Description:</h3>
                         <!-- <input type="textarea" id="problemDescription"
                             placeholder="We have a networking problem with websocket"> -->
-                        <textarea placeholder='We have a networking problem with websocket' rows="5" cols="80" maxlength='1000' minlength='100'></textarea>
+                        <textarea placeholder='Tell us about your problem...' rows="5" cols="80" maxlength='1000' minlength='100'></textarea>
                         <br><br>
+                        <input type="button" id="helpButton" value="Submit">
 
                     </div>
                 </div>
             </div>
 
             </div>
-
-            <br></br>
-
-            <input type="button" id="helpButton" value="submit help">
-            <br><br>
-
         </form>
     </div>
 
