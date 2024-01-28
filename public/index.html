@@ -142,81 +142,80 @@
                 </div>
                 <br><br>
                 <br><br>
-                <br><br>
                 </div>
                 </div>
 
                 <div id = "helprequest-container-title">
                 <h2 class="bottom-titles">Help Request</h2>
+                <div id="idle-container">
+                <br></br>
+                <br></br>
+                <br></br>
+                    <img src="submit_issue.png" alt="">
+                <br></br>
+                <br></br>
+                    <button id="createTicketBtn">Create a Help Ticket</button>
+                <br></br>
+                <br></br>
+                <br></br>
+                
+                </div>
+                
                 <div id="helprequest-container">
+                
                     <div id="trackDiv">
-
+                    
                         <h3>Request Type:</h3>
-
+                    
                         <div class="help-options" id="requestTypeDiv">
                             <label><input type="radio" name="track" value="Scoping" checked>
-                            Scoping</label>
-    
+                                Scoping</label>
+                    
                             <label><input type="radio" name="track" value="Design">
-                            Design</label>
-    
+                                Design</label>
+                    
                             <label><input type="radio" name="track" value="3D Modeling">
-                            3D Modeling</label>
-    
+                                3D Modeling</label>
+                    
                             <label><input type="radio" name="track" value="Development">
-                            Development</label>
-    
+                                Development</label>
+                    
                             <label><input type="radio" name="track" value="Hardware">
-                            Hardware</label>
-
+                                Hardware</label>
+                    
                         </div>
                     </div>
-
-
+                    
+                    
                     <div id="hardwareDiv">
-
+                    
                         <h3>Hardware:</h3>
                         <div class="help-options" id="hardware-options">
-                        <label>
-                            <input type="checkbox" name="hardware" value="0"> Quest 3
-                        </label>
-                        <label>
-                            <input type="checkbox" name="hardware" value="1"> XReal Air2 Pro
-                        </label>
-                        <label>
-                            <input type="checkbox" name="hardware" value="2"> Leia
-                        </label>
+                            <label>
+                                <input type="checkbox" name="hardware" value="0"> Quest 3
+                            </label>
+                            <label>
+                                <input type="checkbox" name="hardware" value="1"> XReal Air2 Pro
+                            </label>
+                            <label>
+                                <input type="checkbox" name="hardware" value="2"> Leia
+                            </label>
                         </div>
                     </div>
-
+                    
                     <div id="requestDiv">
-
-                        <!-- <h3>Create a request ticket</h3>
-
-                        <p>Choose a request type</p>
-                        <div id="requestTypeDiv">
-                            <input type="radio" name="request" value="art" checked>
-                            <label>Art</label><br>
-
-                            <input type="radio" name="request" value="dev">
-                            <label>Development</label><br>
-
-                            <input type="radio" name="request" value="design">
-                            <label>Design</label><br>
-
-                            <input type="radio" name="request" value="general">
-                            <label>General</label>
-
-                        </div> -->
-
+                    
                         <h3>Problem Description:</h3>
                         <!-- <input type="textarea" id="problemDescription"
-                            placeholder="We have a networking problem with websocket"> -->
-                        <textarea placeholder='Tell us about your problem...' rows="5" cols="80" maxlength='1000' minlength='100'></textarea>
+                                                placeholder="We have a networking problem with websocket"> -->
+                        <textarea placeholder='Tell us about your problem...' rows="5" cols="80" maxlength='1000'
+                            minlength='100'></textarea>
                         <br><br>
+                        <button id="cancelButton">Cancel</button>
                         <input type="button" id="helpButton" value="Submit">
-
+                    
                     </div>
+                
                 </div>
             </div>
 

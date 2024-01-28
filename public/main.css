@@ -136,7 +136,7 @@ font-size: 20px;
     gap: 5%;
 }
 
-#progcheck-container, #helprequest-container{
+#progcheck-container, #helprequest-container, #idle-container{
     background-color: white;
     padding: 2% 5%;
     border-radius: 30px;
@@ -144,11 +144,15 @@ font-size: 20px;
 
 }
 
+#idle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    flex-direction: column;
 
-/* #helprequest-container{
-    background-image: url('help_img.png');
-    background-position: center;
-} */
+}
+
 
 .bottom-titles{
     font-size: 26px;
@@ -168,7 +172,7 @@ font-size: 20px;
         /* Center the items horizontally */
         align-items: center;
         /* Center the items vertically */
-        margin-bottom: 40px;
+
 }
 
 .prog-options label{
@@ -339,3 +343,33 @@ textarea {
     font-weight: 600;
     font-size: 20px;
 }
+
+#cancelButton {
+    background: linear-gradient(45deg, #7000FF, #5200FF);
+        color: white;
+        padding: 20px 60px 20px 60px;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 20px;
+
+}
+
+ #idle-container img {
+     max-width: 100%;
+     height: auto;
+     margin-bottom: 10px;
+     /* Adjust the margin as needed */
+ }
+
+ #createTicketBtn {
+     padding: 15px 30px;
+     font-size: 16px;
+     background: linear-gradient(45deg, #7000FF, #5200FF);
+     color: white;
+     border: none;
+     border-radius: 20px;
+     cursor: pointer;
+     font-weight: 600;
+     margin-bottom: 20px;
+ }

@@ -1,3 +1,23 @@
+
+document.getElementById("helprequest-container").style.display = 'none';
+
+
+document.getElementById('createTicketBtn').addEventListener('click', function (event) {
+    event.preventDefault();
+    document.getElementById("helprequest-container").style.display = 'block';
+    document.getElementById("idle-container").style.display = 'none';
+
+});
+
+document.getElementById('cancelButton').addEventListener('click', function () {
+    event.preventDefault();
+    document.getElementById("helprequest-container").style.display = 'none';
+    document.getElementById("idle-container").style.display = 'flex';
+
+});
+
+
+
 const Status = {
     PROBLEM: 1,
     IDEATION: 2,
