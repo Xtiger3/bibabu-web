@@ -8,189 +8,217 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="main.css" />
     <!-- <script src="main.js"></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=OpenSans:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet">
 </head>
-    
+
 <body onload="checkLogin()">
-<div id="loginDiv">
-    <h2>Sign In</h2>
-    <form id="loginForm">
-        Enter your team number:
-        <input type="number" min="1" id="teamNum">
-        <input type="submit" value="Sign In">
-    </form>
+    <div id="loginDiv">
+        <h2>SIGN IN</h2>
+        <br><br>
+        <br><br>
+        <form id="loginForm">
+            <div id="container-1">
+                Enter your team number:
+                <br><br>
+                <input type="number" min="1" id="teamNum">
+            </div>
+            <br></br>
+            <br></br>
+            <br><br>
+            <input type="submit" value="Confirm">
+        </form>
 
-</div>
+    </div>
 
 
-<div id="mainDiv">
-    <form>
+    <div id="mainDiv">
+        <form>
+            <div id="top">
+                <div id="teaminfo-container">
+                    <h1 id="teamNumTitle">Team #65</h1>
+                    <div id="likes-container">
+                        <p id="likes"></p>
+                        <img src="">
+                    </div>
+                </div>
+                <input type="button" id="signInAgain" value="">
+            </div>
+
+            <div id="bottom">
+                <div id="progcheck-container-title">
+                    <h2 class="bottom-titles">Progress Check</h2>
+                <div id="progcheck-container">
+                    <img id="img2" style="display:none" src="google.com">
+                    <img id="img3" style="display:none" src="google.com">
+                    <img id="img4" style="display:none" src="google.com">
+                    
+                    <div id="prog-header">
+                        <div class="prog-button">
+                            <img id="img1" src="prog_button_icon.png">
+                            <input type="radio" id="problem" name="progress" value="Problem"
+                            onclick="updateChecklistOptions('Problem')" checked>
+                            <label for="problem">Problem</label>
+                        </div>
+                        <div class="prog-button">
+                            <img id="img1" src="prog_button_icon.png">
+                            <input type="radio" id="ideation" name="progress" value="Ideation" onclick="updateChecklistOptions('Ideation')">
+                            <label for="ideation">Ideation</label>
+                        </div>
+                        <div class="prog-button">
+                            <img id="img1" src="prog_button_icon.png">
+                            <input type="radio" id="prototyping" name="progress" value="Prototyping"
+                                onclick="updateChecklistOptions('Prototyping')">
+                            <label for="prototyping">Prototyping</label>
+                        </div>
+                        <div class="prog-button">
+                            <img id="img1" src="prog_button_icon.png">
+                            <input type="radio" id="presentation" name="progress" value="Presentation"
+                                onclick="updateChecklistOptions('Presentation')">
+                            <label for="presentation">Presentation</label>
+                        </div>
+                    
+                    </div>
+
+                    <div id="checkbox-container">
+                    <div class="prog-options" id="prog-prob">
+                        <label>
+                            <input type="checkbox" name="check-op" class="op1" id="p1b1" onclick="saveCheckBox(1)"> Define the problem clearly
+                        </label>
+                        <label>
+                            <input type="checkbox" name="check-op" class="op1" id="p1b2" onclick="saveCheckBox(2)"> Understand stakeholders' perspectives
+                        </label>
+                        <label>
+                            <input type="checkbox" name="check-op" class="op1" id="p1b3" onclick="saveCheckBox(3)"> Research existing solutions and challenges
+                        </label>
+                    </div>
+
+                    <div  class="prog-options" id="prog-idea" style="display:none">
+                        <label>
+                            <input type="checkbox" name="check-op" class="op2" id="p2b1" onclick="saveCheckBox(1)"> d
+                        </label>
+                        <label>
+                            <input type="checkbox" name="check-op" class="op2" id="p2b2" onclick="saveCheckBox(2)"> e
+                        </label>
+                        <label>
+                            <input type="checkbox" name="check-op" class="op2" id="p2b3" onclick="saveCheckBox(3)"> f
+                        </label>
+                    </div>
+
+                    <div  class="prog-options" id="prog-proto" style="display:none">
+                        <label>
+                            <input type="checkbox" name="check-op" class="op3" id="p3b1" onclick="saveCheckBox(1)"> g
+                        </label>
+                        <label>
+                            <input type="checkbox" name="check-op" class="op3" id="p3b2" onclick="saveCheckBox(2)"> h
+                        </label>
+                        <label>
+                            <input type="checkbox" name="check-op" class="op3" id="p3b3" onclick="saveCheckBox(3)"> i
+                        </label>
+                    </div>
+
+                    <div  class="prog-options" id="prog-presen" style="display:none">
+                        <label>
+                            <input type="checkbox" name="check-op" class="op4" id="p4b1" onclick="saveCheckBox(1)"> j
+                        </label>
+                        <label>
+                            <input type="checkbox" name="check-op" class="op4" id="p4b2" onclick="saveCheckBox(2)"> k
+                        </label>
+                        <label>
+                            <input type="checkbox" name="check-op" class="op4" id="p4b3" onclick="saveCheckBox(3)"> l
+                        </label>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+                <div id = "helprequest-container-title">
+                <h2 class="bottom-titles">Help Request</h2>
+                <div id="helprequest-container">
+                    <div id="trackDiv">
+
+                        <h3>Request Type:</h3>
+
+                        <div class="help-options" id="requestTypeDiv">
+                            <label><input type="radio" name="track" value="Scoping" checked>
+                            Scoping</label>
     
-        <!-- <table>
-            <tr>
-                <td>Problem: </td>
-                <td><input type="text" id="problem" class="value" placeholder="Ideation"><br></td>
-            </tr>
+                            <label><input type="radio" name="track" value="Design">
+                            Design</label>
     
-            <tr>
-                <td>Track: </td>
-                <td><select name="track" id="track">
-                    <option value="Productivity">Productivity</option>
-                    <option value="Sustainability">Sustainability</option>
-                    <option value="Learning">Learning</option>
-                    <option value="Health">Health</option>
-                </select></td>
-            </tr>
+                            <label><input type="radio" name="track" value="3D Modeling">
+                            3D Modeling</label>
     
-            <tr>
-                <td>Field???: </td>
-                <td><input type="text" id="field" class="value" placeholder="Project Manager"><br></td>
-            </tr>
-        </table> -->
+                            <label><input type="radio" name="track" value="Development">
+                            Development</label>
     
-        
-        <h1 id="teamNumTitle">Team Number</h1>
+                            <label><input type="radio" name="track" value="Hardware">
+                            Hardware</label>
 
-        <p id="likes"></p>
-        <h2>Progress Check</h2>
-        <img id="img1" style="display:none" src="google.com">
-        <img id="img2" style="display:none" src="google.com">
-        <img id="img3" style="display:none" src="google.com">
-        <img id="img4" style="display:none" src="google.com">
+                        </div>
 
-        <input type="radio" id="problem" name="progress" value="Problem" onclick="updateChecklistOptions('Problem')" checked>
-        <label for="problem">Problem</label><br>
-        <input type="radio" id="ideation" name="progress" value="Ideation" onclick="updateChecklistOptions('Ideation')">
-        <label for="ideation">Ideation</label><br>
-        <input type="radio" id="prototyping" name="progress" value="Prototyping" onclick="updateChecklistOptions('Prototyping')" >
-        <label for="prototyping">Prototyping</label>
-        <input type="radio" id="presentation" name="progress" value="Presentation" onclick="updateChecklistOptions('Presentation')">
-        <label for="presentation">Presentation</label>
-    
-        <div id="prog-prob">
-            <label>
-                <input type="checkbox" name="check-op" class="op1" id="p1b1" onclick="saveCheckBox(1)"> a
-            </label>
-            <label>
-                <input type="checkbox" name="check-op" class="op1" id="p1b2" onclick="saveCheckBox(2)"> b
-            </label>
-            <label>
-                <input type="checkbox" name="check-op" class="op1" id="p1b3" onclick="saveCheckBox(3)"> c
-            </label>
-        </div>
-    
-        <div id="prog-idea" style="display:none">
-            <label>
-                <input type="checkbox" name="check-op" class="op2" id="p2b1" onclick="saveCheckBox(1)"> d
-            </label>
-            <label>
-                <input type="checkbox" name="check-op" class="op2" id="p2b2" onclick="saveCheckBox(2)"> e
-            </label>
-            <label>
-                <input type="checkbox" name="check-op" class="op2" id="p2b3" onclick="saveCheckBox(3)"> f
-            </label>
-        </div>
-    
-        <div id="prog-proto" style="display:none">
-            <label>
-                <input type="checkbox" name="check-op" class="op3" id="p3b1" onclick="saveCheckBox(1)"> g
-            </label>
-            <label>
-                <input type="checkbox" name="check-op" class="op3" id="p3b2" onclick="saveCheckBox(2)"> h
-            </label>
-            <label>
-                <input type="checkbox" name="check-op" class="op3" id="p3b3" onclick="saveCheckBox(3)"> i
-            </label>
-        </div>
-    
-        <div id="prog-presen" style="display:none">
-            <label>
-                <input type="checkbox" name="check-op" class="op4" id="p4b1" onclick="saveCheckBox(1)"> j
-            </label>
-            <label>
-                <input type="checkbox" name="check-op" class="op4" id="p4b2" onclick="saveCheckBox(2)"> k
-            </label>
-            <label>
-                <input type="checkbox" name="check-op" class="op4" id="p4b3" onclick="saveCheckBox(3)"> l
-            </label>
-        </div>
-    
-        <!-- <h3>Description</h3>
-        <textarea class="progress-description" placeholder="Describe your progress"></textarea> -->
-    
-        <br></br>
-    
-
-        <div id="tracjDiv">
-            
-            <h3>What is your track</h3>
-
-            <input type="radio" name="track" value="Productivity" checked>
-            <label>Productivity</label><br>
-
-            <input type="radio" name="track" value="Sustainability">
-            <label>Sustainability</label><br>
-
-            <input type="radio" name="track" value="Learning">
-            <label>Learning</label><br>
-
-            <input type="radio" name="track" value="Health">
-            <label>Health</label>
-            
-        </div>
+                    </div>
 
 
-        <div id="hardwareDiv">
-            
-            <h3>Hardware</h3>
-            <label>
-                <input type="checkbox" name="hardware" value="quest"> Quest 3
-            </label>
-            <label>
-                <input type="checkbox" name="hardware" value="xreal"> XReal Air2 Pro
-            </label>
-            <label>
-                <input type="checkbox" name="hardware" value="figma"> Figma
-            </label>
-            
-        </div>
+                    <div id="hardwareDiv">
 
-        <div id="requestDiv">
-            
-            <h3>Create a request ticket</h3>
+                        <h3>Hardware:</h3>
+                        <div class="help-options" id="hardware-options">
+                        <label>
+                            <input type="checkbox" name="hardware" value="quest"> Quest 3
+                        </label>
+                        <label>
+                            <input type="checkbox" name="hardware" value="xreal"> XReal Air2 Pro
+                        </label>
+                        <label>
+                            <input type="checkbox" name="hardware" value="figma"> Figma
+                        </label>
+                        </div>
+                    </div>
 
-            <p>Choose a request type</p>
-            <div id="requestTypeDiv">
-                <input type="radio" name="request" value="art" checked>
-                <label>Art</label><br>
+                    <div id="requestDiv">
 
-                <input type="radio" name="request" value="dev">
-                <label>Development</label><br>
+                        <!-- <h3>Create a request ticket</h3>
 
-                <input type="radio" name="request" value="design">
-                <label>Design</label><br>
+                        <p>Choose a request type</p>
+                        <div id="requestTypeDiv">
+                            <input type="radio" name="request" value="art" checked>
+                            <label>Art</label><br>
 
-                <input type="radio" name="request" value="general">
-                <label>General</label>
+                            <input type="radio" name="request" value="dev">
+                            <label>Development</label><br>
+
+                            <input type="radio" name="request" value="design">
+                            <label>Design</label><br>
+
+                            <input type="radio" name="request" value="general">
+                            <label>General</label>
+
+                        </div> -->
+
+                        <h3>Problem Description:</h3>
+                        <!-- <input type="textarea" id="problemDescription"
+                            placeholder="We have a networking problem with websocket"> -->
+                        <textarea placeholder='We have a networking problem with websocket' rows="5" cols="80" maxlength='1000' minlength='100'></textarea>
+                        <br><br>
+
+                    </div>
+                </div>
+            </div>
 
             </div>
 
-            <p>Describe your problem</p>
-            <input type="text" id="problemDescription" placeholder="We have a networking problem with websocket">
+            <br></br>
+
+            <input type="button" id="helpButton" value="submit help">
             <br><br>
-            
-        </div>
 
-    
-        <input type="button" id="helpButton" value="submit help">
-        <br><br>
-    
-    </form>
+        </form>
+    </div>
 
-
-    <input type="button" id="signInAgain" value="this is not my team">
-</div>
-
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
