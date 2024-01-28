@@ -40,6 +40,7 @@ document.getElementById('helpButton').addEventListener('click', function () {
     const progress = parseInt(document.querySelector('input[name="progress"]:checked').getAttribute("value"));
     const track = "Work";
     const hardware = parseInt(document.querySelector('input[name="hardware"]:checked').getAttribute("value"));
+    console.log(hardware);
     const problem = document.getElementById('problemDescription').value;
     const field = document.querySelector('input[name="request"]:checked').getAttribute("value");;
 
@@ -50,6 +51,10 @@ document.getElementById('helpButton').addEventListener('click', function () {
     // Send the message as JSON to the WebSocket server
     ws.send(JSON.stringify(message));
     console.log(JSON.stringify(message));
+    document.getElementById('form_img').src = "success_submit.png";
+    document.getElementById('idle-container').style.display = "flex";
+    document.getElementById('helprequest-container').style.display = "none";
+    
 });
 
 function saveCheckBox(boxNum) {
@@ -169,7 +174,7 @@ loginForm.addEventListener("submit", (e) => {
     localStorage.setItem("teamNum", document.getElementById("teamNum").value)
     document.getElementById('loginDiv').style.display = 'none';
     document.getElementById('mainDiv').style.display = 'block';
-    document.getElementById('teamNumTitle').innerHTML = `Team # ${localStorage.getItem('teamNum')}`;
+    document.getElementById('teamNumTitle').innerHTML = `Team #${localStorage.getItem('teamNum')}`;
 });
 
 document.getElementById('signInAgain').addEventListener('click', function () {
@@ -193,7 +198,7 @@ function loadMain() {
     } else {
         document.getElementById('loginDiv').style.display = 'none';
         document.getElementById('mainDiv').style.display = 'block';
-        document.getElementById('teamNumTitle').innerHTML = `Team # ${localStorage.getItem('teamNum')}`;
+        document.getElementById('teamNumTitle').innerHTML = `Team #${localStorage.getItem('teamNum')}`;
     }
 
     // load checklist
@@ -242,6 +247,10 @@ function updateCheckboxes(array, group) {
     });
 }
 
+function createTicket() {
+    document.getElementById('form_img').src = "submit_issue.png";
+}
+
 // function getCheckedCheckboxes() {
 //     const checkboxes = document.getElementById('hardwareDiv').querySelectorAll('input[type="checkbox"]');
 //     const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
@@ -250,7 +259,7 @@ function updateCheckboxes(array, group) {
 //   }
 
 // change to your ip address
-const ws = new WebSocket('ws://172.20.10.3:8082');
+const ws = new WebSocket('ws://10.29.183.155:8082');
 const form = document.querySelector('form')
 
 ws.onmessage = (e) => {

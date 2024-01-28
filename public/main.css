@@ -373,3 +373,7 @@ textarea {
      font-weight: 600;
      margin-bottom: 20px;
  }
+
+ #helpButton:active, #cancelButton:active, #createTicketBtn:active {
+    background: linear-gradient(45deg, #fa64ff, #5200FF);
+ }
