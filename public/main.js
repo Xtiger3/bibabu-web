@@ -36,7 +36,7 @@ let check4 = [false, false, false]
 
 document.getElementById('helpButton').addEventListener('click', function () {
 
-    const teamNumber = localStorage.getItem('teamNum');
+    const teamNumber = parseInt(localStorage.getItem('teamNum'));
     const progress = parseInt(document.querySelector('input[name="progress"]:checked').getAttribute("value"));
     const track = "Work";
     const hardware = parseInt(document.querySelector('input[name="hardware"]:checked').getAttribute("value"));
@@ -197,6 +197,7 @@ function loadMain() {
     }
 
     // load checklist
+    document.getElementById('backing1').style.backgroundColor = '#EEF2FF'
     if (localStorage.getItem('check1') != null) {
         check1 = localStorage.getItem('check1').split(',').map(value => value === 'true');;
         console.log(check1)
