@@ -38,7 +38,7 @@ document.getElementById('helpButton').addEventListener('click', function () {
 
     const teamNumber = localStorage.getItem('teamNum');
     const progress = parseInt(document.querySelector('input[name="progress"]:checked').getAttribute("value"));
-    const track = document.querySelector('input[name="track"]:checked').getAttribute("value");
+    const track = "Work";
     const hardware = parseInt(document.querySelector('input[name="hardware"]:checked').getAttribute("value"));
     const problem = document.getElementById('problemDescription').value;
     const field = document.querySelector('input[name="request"]:checked').getAttribute("value");;
@@ -249,7 +249,7 @@ function updateCheckboxes(array, group) {
 //   }
 
 // change to your ip address
-const ws = new WebSocket('ws://10.29.183.155:8082');
+const ws = new WebSocket('ws://172.20.10.3:8082');
 const form = document.querySelector('form')
 
 ws.onmessage = (e) => {
